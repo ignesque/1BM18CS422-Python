@@ -7,6 +7,7 @@ def fibonacci(num):
     elif num==1:
         fiblist.append(num1)
     elif num==2:
+        fiblist.append(num1)
         fiblist.append(num2)
     else:
         fiblist.append(num1)
