@@ -1,6 +1,6 @@
 def order(arr, limit, flag='FALSE'):
-    for i in range(0, limit-1):
-        for j in range(i + 1, limit-1):
+    for i in range(0, limit - 1):
+        for j in range(i + 1, limit):
             if arr[i] > arr[j]:
                 flag = 'TRUE'
     if flag == 'TRUE':
@@ -11,9 +11,8 @@ def order(arr, limit, flag='FALSE'):
 
 
 def check(arr, limit, checkvalue, flag='FALSE'):
-    for i in range(0, limit):
-        if arr[i] == checkvalue:
-            print(f"Element {checkvalue} is found at position {i + 1}")
+    if checkvalue in arr:
+            print(f"Element {checkvalue} is found at position {arr.index(checkvalue)}")
             flag = 'TRUE'
     if flag == 'FALSE':
         print("Element not found")
