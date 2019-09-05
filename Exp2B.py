@@ -16,6 +16,4 @@ def reverseString(str):
 string = input("Enter a string:")
 reverse(string)
 reverseString(string)
-bold='033[1m'
-end='033[0m'
 
