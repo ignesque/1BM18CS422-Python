@@ -9,11 +9,11 @@ class CallDetail:
     def printDetails(self):
        print(f"Call From:{self.callfrom}\nCall To:{self.callto}\nCall Duration:{self.duration}\nCall Type:{self.calltype}\n")
 
-class util:
+class Util:
     def __init__(self):
         self.list_of_call_objects = []
 
-    def parse_customer(self, list_of_call_string):
+    def parseCustomer(self, list_of_call_string):
         for calls in list_of_call_string:
             details = calls.split(",")
             obj = CallDetail(*details)
@@ -30,7 +30,6 @@ call2='9990000001,9330000002,54,Local'
 call3='9990000001,9330000003,6,ISD'
 
 list_of_call_string = [call, call2, call3]
-util().parse_customer(list_of_call_string)
-ob = util()
-ob.parse_customer(list_of_call_string)
-ob.getDetails()
+UtilObj=Util()
+UtilObj.parseCustomer(list_of_call_string)
+UtilObj.getDetails()
