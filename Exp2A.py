@@ -12,14 +12,16 @@ def order(arr, limit, flag='FALSE'):
 
 def check(arr, limit, checkvalue, flag='FALSE'):
     if checkvalue in arr:
-            print(f"Element {checkvalue} is found at position {arr.index(checkvalue)}")
-            flag = 'TRUE'
+        print(
+            f"Element {checkvalue} is found at position {arr.index(checkvalue)+1}")
+        flag = 'TRUE'
     if flag == 'FALSE':
         print("Element not found")
 
 
 arr = list()
 limit = int(input("Enter the range of list:"))
+print("Enter list elements:")
 arr = [int(i) for i in input().split()]
 if (len(arr) > limit):
     arr = arr[:limit]
