@@ -5,6 +5,7 @@ __pycache__/
 
 #Reminants
 *.txt
+*.db
 
 # C extensions
 *.so
