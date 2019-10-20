@@ -1,11 +1,5 @@
-numlist=[]
-print("Enter numbers to be added in the list")
-while True:
-    num=int(input())
-    if num != -1:
-        numlist.append(num)
-    else:
-        break
+print("Enter numbers to be added in the list:")
+numlist=[int(num) for num in input().split()]
 evenlist=[]
 for even in numlist:
     if even % 2 == 0:
@@ -16,3 +10,4 @@ for num in numlist:
 print("\nThe even numbers in the list are",end=" ")
 for num in evenlist:
     print(num,end=" ")
+    
