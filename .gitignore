@@ -7,6 +7,9 @@ __pycache__/
 *.txt
 *.db
 
+#Unnecesary ones
+
+
 # C extensions
 *.so
 
