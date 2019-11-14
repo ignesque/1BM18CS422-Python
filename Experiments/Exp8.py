@@ -3,14 +3,16 @@ from sqlite3 import Error, connect
 
 def connection():
     try:
-        con = connect('Student.db')
+        con = connect('Experiments/Student.db')
+        print("Connection Established")
         return con
     except Error:
         print(Error)
 
 
+
 def table(con):
-    query = "CREATE TABLE if exists information(USN text PRIMARY KEY,Name text,Department text,CGPA real)"
+    query = "CREATE TABLE if not exists information(USN text PRIMARY KEY,Name text,Department text,CGPA real)"
     cursor = con.cursor()
     try:
         cursor.execute(query)
@@ -83,7 +85,7 @@ def update(con, key, new):
 
 
 def delete(con, key):
-    query = "DELETE information WHERE USN=?"
+    query = "DELETE from information WHERE USN=?"
     cursor = con.cursor()
     try:
         cursor.execute(query, (key,))
