@@ -2,18 +2,24 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.zip
 
 #Practice
 Example.py
 Another.py
 Other.py
+Project/
+env/
+venv/
 
 #Reminants
 *.txt
 *.db
 
 #Unnecesary ones
-
+*.sqlite3-shm
+*.sqlite3-wal
+*.pickle
 
 # C extensions
 *.so
