@@ -5,6 +5,7 @@ def board(row, col):
     print("  --- " * col)
 
 
-row = int(input("Enter row size of board:"))
-col = int(input("Enter col size of board:"))
-board(row, col)
+row = input("Enter row size of board:")
+col = input("Enter col size of board:")
+board(int(row), int(col))
+
