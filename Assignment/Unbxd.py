@@ -61,7 +61,7 @@ def main():
             writer = csv.writer(f)
             for k, v in results.items():
                 writer.writerow([k, v])
-        start += 1
+        start += 0
         URL = "https://search.unbxd.io/fb853e3332f2645fac9d71dc63e09ec1/demo-unbxd700181503576558/search?&q=*&rows=10&start="+str(start)
         r = requests.get(url = URL) 
         data = r.json() 
