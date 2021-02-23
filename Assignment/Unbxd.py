@@ -1,6 +1,16 @@
 import requests
 import csv
 
+def filter(products, keyfilter):
+     for key in products.keys():
+        collist= []
+        if key == keyfilter:
+            colors = products[key].split(',')
+            for col in colors:
+                color = col.split('::')
+                for i in range(0, len(color), 3):
+                    collist.append(color[i])
+            products[key] = ', '.join(map(str, collist))
 
 def extract(products):
     for key in products.keys():
@@ -11,37 +21,10 @@ def extract(products):
 
     for key in products.keys():
         if type(products[key]) == list: 
-            products[key] = ', '.join(map(str, set(products[key])))
-
-    for key in products.keys():
-        collist= []
-        if key == 'unbxd_color_for_category':
-            colors = products[key].split(',')
-            for col in colors:
-                color = col.split('::')
-                for i in range(0, len(color), 3):
-                    collist.append(color[i])
-            products[key] = ', '.join(map(str, collist))
-
-    for key in products.keys():
-        collist= []
-        if key == 'test_colors':
-            colors = products[key].split(',')
-            for col in colors:
-                color = col.split('::')
-                for i in range(0, len(color), 3):
-                    collist.append(color[i])
-            products[key] = ', '.join(map(str, collist))
-
-    for key in products.keys():
-        collist= []
-        if key == 'colorSwatch':
-            colors = products[key].split(',')
-            for col in colors:
-                color = col.split('::')
-                for i in range(0, len(color), 3):
-                    collist.append(color[i])
-            products[key] = ', '.join(map(str, collist))
+            products[key] = ', '.join(map(str,products[key]))
+    filter(products, keyfilter = "unbxd_color_for_category")
+    filter(products, keyfilter = "test_colors")
+    filter(products, keyfilter = "colorSwatch")
     return products
 
 def main():
