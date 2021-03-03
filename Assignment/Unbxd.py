@@ -1,7 +1,7 @@
 import requests
-import csv
+import json
+import pandas
 from time import sleep
-from random import randint
 
 def filter(products, keyfilter):
     if keyfilter in products.keys():    
@@ -40,20 +40,21 @@ def extract(products):
     return products
 
 def main():
-    URL = "https://search.unbxd.io/fb853e3332f2645fac9d71dc63e09ec1/demo-unbxd700181503576558/search?&q=*&rows=10&start="
-    for page in range(0, 10): 
-        page = requests.get(URL + str(page))
-        if page:
-            data = page.json() 
+    URL = "https://search.unbxd.io/fb853e3332f2645fac9d71dc63e09ec1/demo-unbxd700181503576558/search?&q=*&rows=20&start="
+    results = []
+    for page in range(0, 25): 
+        r = requests.get(URL + str(page), timeout=5)
+        if r.ok:
+            data = r.json() 
             products = data['response']['products'][0]
-            results = extract(products)
-
-    csv.register_dialect('myDialect', delimiter=',', doublequote=True,
-    quoting=csv.QUOTE_NONE)
-    with open('Unbxd-2021-interns test_VigneshTS.csv', 'a') as f:  
-        writer = csv.writer(f, skipinitialspace = True,  quoting=csv.QUOTE_NONE, escapechar=' ')
-        for k, v in results.items():
-            writer.writerow([k, v])
+            results.append(extract(products))
+            sleep(r.elapsed.total_seconds())
+            print(f"Took {r.elapsed.total_seconds()} seconds")
+    with open('unbxd.json', 'w') as f:
+        json.dump(results, f, indent=2) 
+    with open('unbxd.json') as f:
+        data = pandas.read_json('unbxd.json')
+        data.to_csv('Unbxd-2021-interns test_VigneshTS.csv', index=False)
 
 if __name__ == "__main__":
     main()
